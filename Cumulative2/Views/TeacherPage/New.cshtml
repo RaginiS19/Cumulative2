@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Add New Teacher";
+}
+
+<h2 class="mt-4 mb-4">Add New Teacher</h2>
+
+<div class="container">
+    <form asp-action="Create" method="post" class="border p-4 rounded shadow-sm bg-light">
+        <div class="mb-3">
+            <label for="TeacherFName" class="form-label">First Name:</label>
+            <input type="text" name="TeacherFName" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="TeacherLName" class="form-label">Last Name:</label>
+            <input type="text" name="TeacherLName" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="EmployeeNumber" class="form-label">Employee Number:</label>
+            <input type="text" name="EmployeeNumber" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="HireDate" class="form-label">Hire Date:</label>
+            <input type="date" name="HireDate" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="Salary" class="form-label">Salary:</label>
+            <input type="number" step="0.01" name="Salary" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Teacher</button>
+    </form>
+
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewBag.SuccessMessage
+        </div>
+    }
+
+    @if (TempData["DeleteSuccess"] != null)
+    {
+        <div class="alert alert-success mt-3">
+            @TempData["DeleteSuccess"]
+        </div>
+    }
+</div>
