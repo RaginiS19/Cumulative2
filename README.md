@@ -45,3 +45,39 @@ Clone the repository to your local machine using the command:
 ```bash
 git clone <repository_url>
 cd <repository_directory>
+
+### API Endpoints
+
+#### List All Teachers
+
+GET /api/TeacherData/ListTeachers
+
+
+#### Search Teachers
+GET /api/TeacherData/ListTeachers/{SearchKey?}
+
+#### Get Teacher Details by ID
+GET /api/TeacherData/FindTeacher/{id}
+
+#### Add a New Teacher
+POST /api/TeacherData/AddTeacher
+
+#### Request Body (JSON format):
+{
+  "TeacherFname": "FirstName",
+  "TeacherLname": "Lastname",
+  "EmployeeNumber": "T1234",
+  "HireDate": "2024-01-15",
+  "Salary": 55
+}
+
+
+
+
+
+
+
+
+
+
+
