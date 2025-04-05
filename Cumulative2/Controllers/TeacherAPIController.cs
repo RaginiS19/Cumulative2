@@ -4,10 +4,13 @@ using MySql.Data.MySqlClient;
 
 namespace CumulativeProject.Controllers
 {
+// API controller for managing teacher data
     [ApiController]
     [Route("api/TeacherAPI")]
     public class TeacherAPIController : Controller
     {
+    // Initializes the SchoolDbContext to access the database
+    // Adds a new teacher to the database
         private readonly SchoolDbContext _context = new SchoolDbContext();
 
         // POST: api/TeacherAPI/AddTeacher
@@ -56,6 +59,7 @@ namespace CumulativeProject.Controllers
         [HttpDelete("DeleteTeacher/{id}")]
         public IActionResult DeleteTeacher(int id)
         {
+        // Establishes a database connection to delete the teacher
             using var conn = _context.AccessDatabase();
             conn.Open();
 
