@@ -71,6 +71,32 @@ POST /api/TeacherData/AddTeacher
   "Salary": 55
 }
 
+#### Delete a Teacher by ID
+POST /api/TeacherData/DeleteTeacher/{id}
+
+#### Testing the APIs
+# List all teachers
+curl http://localhost:<your_port>/api/TeacherData/ListTeachers
+
+# Find a teacher by ID
+curl http://localhost:<your_port>/api/TeacherData/FindTeacher/1
+
+# Add a new teacher (example with JSON data)
+curl -X POST -H "Content-Type: application/json" -d '{
+  "TeacherFname": "John",
+  "TeacherLname": "Doe",
+  "EmployeeNumber": "T1234",
+  "HireDate": "2024-01-01",
+  "Salary": 65000
+}' http://localhost:<your_port>/api/TeacherData/AddTeacher
+
+# Delete teacher with ID 3
+curl -X POST http://localhost:<your_port>/api/TeacherData/DeleteTeacher/3
+
+
+
+
+
 
 
 
