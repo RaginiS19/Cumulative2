@@ -1,0 +1,43 @@
+﻿@model CumulativeProject.Models.Student
+@{
+    ViewData["Title"] = "Add New Student";
+}
+
+<h2 class="mt-4 mb-4">Add New Student</h2>
+
+<div class="container">
+    <form asp-action="Create" method="post" class="border p-4 rounded shadow-sm bg-light">
+        <div class="mb-3">
+            <label class="form-label">First Name:</label>
+            <input asp-for="StudentFName" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name:</label>
+            <input asp-for="StudentLName" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Student Number:</label>
+            <input asp-for="StudentNumber" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Enrol Date:</label>
+            <input asp-for="EnrolDate" class="form-control" type="date" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Student</button>
+    </form>
+
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success mt-3">@ViewBag.SuccessMessage</div>
+    }
+
+    @if (TempData["DeleteSuccess"] != null)
+    {
+        <div class="alert alert-success mt-3">@TempData["DeleteSuccess"]</div>
+    }
+
+    @if (TempData["NotFoundError"] != null)
+    {
+        <div class="alert alert-danger mt-3">@TempData["NotFoundError"]</div>
+    }
+</div>

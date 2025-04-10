@@ -1,4 +1,5 @@
 ﻿using CumulativeProject.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 
@@ -25,8 +26,9 @@ namespace CumulativeProject.Controllers
         [HttpPost]
         public IActionResult Create(Teacher teacher)
         {
-            if (!ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(teacher.TeacherFName) || string.IsNullOrWhiteSpace(teacher.TeacherLName))
             {
+                ViewBag.ErrorMessage = "First Name and Last Name are required.";
                 return View("New", teacher);
             }
 
@@ -86,7 +88,8 @@ namespace CumulativeProject.Controllers
 
             if (teacher == null)
             {
-                return NotFound();
+                TempData["NotFoundError"] = "Teacher not found.";
+                return RedirectToAction("New");
             }
 
             return View(teacher);
